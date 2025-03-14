@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <!-- Header constructed by referencing in-class code -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1 style = "color:orangered; font-size: 28px; text-align: center;">Welcome to my Website about Evolutionary Computing</h1>
+    <p>
+    Evolutionary computing is a field of computer science
+    which seeks to imitate biological evolution to devise
+    novel solutions which are not easily derived through
+    more conventional, less random ways.
+
+    The field of elements of evolutionary computing have been
+    prevalent in the world of artifical intelligence since the
+    1950s and 1960s, but evolutionary computing only gained
+    significant recognition in the 1990s.
+    
+    Much of the most prevalent work in evolutionary computing seeks
+    to investigate biological evolutionary processes, but the
+    field is by no means limited to the study of biological processes
+    like populations of chromosomes. Most of the biological work
+    seeks to directly model the biological processes of recombination,
+    mutation, and selective pressure. One notable early example of
+    non-biological applications is the work of Ingo Rechenberg
+    and Hans-Paul Schewefel. In this work the two solved a fluid
+    dynamics problem which could not be solved using traditional
+    mathematical approaches.
+
+    Today the field of evolutionary computing consists of many prominent
+    techniques and approaches. Many modern approaches use agent-based
+    modeling methods in which agents are generated and altered by
+    the algorithm and then scored following each iteration. Depending
+    on the approach used, low scoring agents are then removed and
+    another iteration begins. On another page, I elaborate on basic implementaion of evolutionary computing.
+    <br>
+    </p>
+
+    <img src = https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Darwin%27s_finches_by_Gould.jpg/360px-Darwin%27s_finches_by_Gould.jpg 
+    alt = "" width = 500>
+
+    <button id = 'navigationButton'>More on Evolutionary Computing</button>
+    <script>
+        const navigationButton = document.getElementById('navigationButton');
+        navigationButton.addEventListener('click', function() {
+            window.location.href = 'page_2.html';
+        });
+    </script>
+    <h2>Contact Information</h2>
+    <a href="https://www.linkedin.com/in/eddielowney/">LinkedIn Account</a>
+</body>
+</html>

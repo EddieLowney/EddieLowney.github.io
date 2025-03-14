@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <!-- Header constructed by referencing in-class code -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id = 'navigationButton'>Return to Main Page</button>
+    <script>
+        const navigationButton = document.getElementById('navigationButton')
+        navigationButton.addEventListener('click', function(){
+            window.location.href = 'index.html';
+        }
+
+        )
+    </script>
+
+    <h2>More Information on Evolutionary Computing</h2>
+    <p>
+        Today, evolutionary computing has many applications. Effectively any process in which multiple criteria are being maximized can be modeled
+        to some extent using evolutionary computing methods. Applying evolutionary computing in this context is a relatively straight-forward
+        process. The thing being optimized must first be modeled as an agent. For example, in my experience the allocation of Teaching Assistants
+        to different lab sections was modeled as an array in which each TA was represented with a column and each section was represented as a row.
+        Ones represented TA assignment and zeros indicated that the TA was not assigned to that section. Once there is a sufficient model, the model
+        altered or mutated by the program. Then, these mutated versions are scored. If there are multiple criteria, then the criteria scores must be
+        rated with respect to one another or only pareto efficient agents or solutions (agents for which there is no other agent that outperforms it
+        in all criteria) can be removed. This process is then repeated until there remain only a few optimal solutions.
+
+        Evolutionary computing has not grown to the incredible prominence that other subfields of AI have, but still holds great promise for innovation.
+        Evolutionary computing is also uniquely applicable to an great variety of problems and, while perhaps compute-intensive, is relatively easy to
+        implement a simple version of if the problem can be easily modeled.
+    </p>
+    <p>List of Evolutionary Computing Techniques</p>
+    <ul> 
+        <li>Agent-based modeling</li>
+        <li>Artificial immune systems</li>
+        <li>Dual-phase evolution</li>
+        <li>Memetic algorithms</li>
+        <li>Differential evolution</li>
+    </ul>    
+
+    <img src = https://cdn.educba.com/academy/wp-content/uploads/2024/03/Pareto-Efficiency-and-Production-Possibility-Frontier-PPF-.png, alt = "orangered", width = 500>
+</body>
+</html>
