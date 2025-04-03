@@ -1,0 +1,161 @@
+/* Apply margin to the whole page */
+/* Apply background color to entire page */
+html {
+    background-color: #6b839e; /* Color for the margins and behind h1 */
+    min-height: 100%;
+    padding-top: 100px; /* Add padding at the top of the page */
+  }
+
+  p {
+    background-color: rgb(194, 210, 212) !important;
+    font-size: 18px;
+    border: 2px solid black;
+    padding: 10px;
+  }
+  
+  h1 {
+    max-width: 1200px;
+    margin: 0 auto 20px; /* Center horizontally with bottom margin */
+    padding: 20px;
+    background-color: transparent; /* Make h1 background transparent */
+    color: white; /* Make text white to stand out against the blue background */
+    text-align: center;
+  }
+  
+
+  /* Style for the wrapper that contains all content except h1 */
+  .wrapper {
+    max-width: 1200px;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto 50px; /* Center horizontally with bottom margin */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  body {
+    font-family: Georgia, serif;
+    margin: 0;
+    padding: 0;
+  }
+
+/* Table styles */
+table {
+    width: auto; /* Ensures table width matches content */
+    max-width: 80%; /* Prevents table from stretching too wide */
+    margin: 20px auto; /* Centers the table on the page */
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.center {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically if needed */
+    width: 100%;
+    margin: 20px 0; /* Add some space around */
+}
+
+iframe {
+    display: block; /* Ensures iframe takes only necessary space */
+    margin: auto; /* Works as a fallback for centering */
+}
+
+
+.text-with-right-iframe {
+    display: flex;
+    align-items: flex-start;  /* Align both items at the top */
+    justify-content: space-between;
+    flex-wrap: wrap;  /* Ensures that items wrap if they overflow */
+}
+
+.text-with-right-iframe p {
+    max-width: 50%;  /* Adjust text width to leave room for the iframe */
+    height: auto;  /* Allow the text container to grow naturally based on content */
+    overflow-y: auto;  /* Allows scrolling if the text exceeds the height */
+    margin-right: 10px;  /* Optional: Adds spacing between the text and iframe */
+}
+
+.text-with-right-iframe iframe {
+    width: 300;  /* Reduces iframe width further to make it fit */
+    height: 300;  /* Height of the iframe to maintain aspect ratio */
+    min-width: 300;  /* Ensure iframe doesn't shrink too much */
+    max-width: 100%;  /* Prevent iframe from exceeding the container's width */
+    overflow: hidden;  /* Hides overflow inside the iframe if needed */
+}
+
+/* Fixed Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #6b839e; /* Match your site's color scheme */
+    z-index: 1000; /* Ensures navbar stays on top of other content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds subtle shadow */
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Centers the menu items */
+}
+
+.navbar li {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.navbar-icon {
+    height: 20px;
+    margin-right: 8px;
+}
+
+/* Add padding to the body to prevent content from hiding behind the navbar */
+body {
+    padding-top: 50px; /* Adjust this value based on your navbar height */
+}
+
+/* Adjust h1 position to account for navbar */
+h1 {
+    margin-top: 60px; /* Gives space between navbar and heading */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.shaded-region {
+    position: absolute; /* Or 'fixed' if you want it to stay in place */
+    top: 200px; /* Adjust the position */
+    left: 150px;
+    width: 80%; /* Adjust size */
+    height: 300px; /* Adjust height */
+    background-color: rgba(26, 4, 4, 0.3); /* Light gray with transparency */
+    z-index: -1; /* Places it behind other elements */
+    border-radius: 10px; /* Optional: Rounded corners */
+}
