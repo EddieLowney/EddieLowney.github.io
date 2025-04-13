@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="final_presentation.css">
+    <title>Impact of Weather and Road Conditions on Vehicle Crashes</title>
+
+    <style>
+        #vis.vega-embed {
+          width: 100%;
+          display: flex;
+        }
+    
+        #vis.vega-embed details,
+        #vis.vega-embed details summary {
+          position: relative;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .text {
+            margin-right: 20px; /* Adjusts the space between the text and the heatmap */
+            margin-top: 150px; /* Adjusts the vertical position of the text */
+            max-width: 500px; /* Optional: Restricts the text width */
+        }
+        #heatmap {
+            width: 500px; /* Set the heatmap size */
+            height: 300px; /* Set the heatmap size */
+            /* Removed border to avoid misalignment */
+            background-color: #fff; /* Optional: You can set a background color if needed */
+        }
+    </style>
+      </style>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+
+<div class="navbar">
+    <ul>
+        <li><a href="#accident-map"><img src="https://datavizcatalogue.com/images/buttons/SVG/on/point_map.svg" alt="Contact" class="navbar-icon">Accident Map</a></li>
+        <li><a href="#heatmap"><img src="https://datavizcatalogue.com/images/buttons/SVG/on/heat_map.svg" alt="Contact" class="navbar-icon">Injury Severity by Weather and Vehicle Age</a></li>
+        <li><a href="#injury-weather-hazard"><img src="https://datavizcatalogue.com/images/buttons/SVG/on/bar_graph.svg" alt="Injury by Weather Type" class="navbar-icon">Injury by Weather Hazard</a></li>
+        <li><a href="#injury-area-graph"><img src="https://datavizcatalogue.com/images/buttons/SVG/on/area_graph.svg" alt="Injury Area Graph" class="navbar-icon">Injury Area Graph</a></li>
+        <li><a href="#scatter_bar"><img src="https://datavizcatalogue.com/images/buttons/SVG/on/point_map.svg" alt="Contact" class="navbar-icon">Major Roads</a></li>
+
+    </ul>
+</div>    
+
+<h1>Impact of Weather and Road Conditions on Vehicle Crashes in Montogomery County, Maryland</h1>
+
+<div class="wrapper">
+    <h3>Introduction</h3>
+    <p>Montgomery county is the most populace county in Maryland with over 1 million residents. 
+      Montgomery also has the second highest cost of living in the state and a broadly wealthy population.
+      It is also a popular county to drive through in order to get to 
+      the nation’s capital: Washington, D.C as well as Baltimore. Because of this increased traffic,
+      and its large population, Montgomery county serves as an excellent candidate for analysis of traffic incidents
+      which is generalizable to both communters, residents taking shorter trips, and long-haul traffic. Our 
+      project aims to analyze the impact of weather and road conditions in car crashes and 
+      how they impact the wide-ranging levels in severity of crashes in Montgomery county. We used data
+      collected by the Maryland State Police automated crash reporting system, the Montogomery county polices, 
+      and other relevant police jurisdictions. The data contained 192,000 records of separate car crashes
+      occurring in Montogomery County from 2015 to roughly the current date. No significant cleaning was performed on the data.
+      However, some of the visuals required deriving new data from existing columns. For example,
+      the vehicle age was calculated from the vehicle model year and crash date.
+      Specifically, we hope to determine if there is a strong up-tick in crash severity due to weather
+      conditions, if there are specific geographic areas or roads which are especially prone to severe accidents,
+      and whether other factors like vehicle age and road speed limits are relevant. 
+      We used these reference papers as inspiration for our work in our project: </p>
+      <a href="https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813560">Overview of Motor Vehicle Traffic Crashes
+        in 2022<br></a>
+      <a href="https://www.mdpi.com/2220-9964/4/4/2681">Weather Conditions, Weather Information, and Car Crashes</a>  
+    
+
+   <h3>Overview of Statistics</h3>
+    <div class="center"></div>
+        <table class="tg">
+            <thead>
+              <tr>
+                <th class="tg-0lax">Variable Name</th>
+                <th class="tg-0lax">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tg-0lax">Weather</td>
+                <td class="tg-0lax">Type of Weather during Crash
+                                    (Clear, Cloudy, Fog, Rain, Snow, Other)</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Vehicle Age</td>
+                <td class="tg-0lax">Difference of Crash Time and Vehicle Year</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Injury Severity</td>
+                <td class="tg-0lax">Type of Injury Sustained in Crash
+                                    (None, Possible Injury, Minor Injury, Major Injury, Fatal)
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Road Name</td>
+                <td class="tg-0lax">Name of Road Where Crash Occurred</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Crash Date</td>
+                <td class="tg-0lax">Time of the Crash</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Latitude</td>
+                <td class="tg-0lax">Latitude of Crash</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Longitude</td>
+                <td class="tg-0lax">Longitude of Crash</td>
+              </tr>
+            </tbody>
+        </table>
+    <a id="accident-map" href="#accident-map">
+    </a>
+    <p>This interactive map shows where crashes happened in the 2024 calendar year.
+        Although many points are shown at default, users can filter crashes based 
+        on the type of injury sustained as a result of the crash: serious, minor, and 
+        possible injury. As a result, these different types of injuries are also 
+        represented with a different color. By filtering for only crashes leading to 
+        serious injuries, we see that a majority of these crashes happen on major highways 
+        and roads, instead of residential areas. In addition, it seems like the weather 
+        conditions do not seem to have an affect on the severity of these crashes whatsoever 
+        because some of these crashes happened in clear weather. On the map, this is 
+        represented by solid color lines like pink and yellow. Some recurring roads that have 
+        had serious injuries take place include Georgia Avenue, Frederick Road, and Eisenhower 
+        Memorial Highway. It makes sense that more serious injuries would happen on these 
+        types of roads, but it’s important to acknowledge this to further investigate what 
+        can be done on the roads to minimize the number of crashes that lead to fatal or 
+        serious injuries. 
+    </p>
+    <div class = 'center'></div>
+        <iframe src="map.html" width="90%" height="600px" frameborder="0"></iframe>
+
+    <hr style="border: none; height: 2px; background: rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8); margin-top: 50px">
+
+    <div class="shaded-region"></div>
+    <a id="heatmap" href="#heatmap">
+    </a>
+    <div class="container" style="margin-bottom: 150px">
+      <div class="text">
+          <p style="margin-left: 130px;">
+              This heatmap depicts the proportion of accidents which resulted in major injury or fatality
+              for different weather types (displayed on the y-axis) and vehicle age (displayed on the x-axis).
+              This plot demonstrates a significantly greater risk for individuals driving older vehicles
+              to sustain significant injury in the event of a crash. Perhaps counterintuitively, this graph
+              also suggests that older cars do not see a decrease in safety relative to newer cars in
+              more extreme weather, like snow and rain. The data suggests that, instead, the difference
+              in major injury likelihood between newer and older cars decreases.
+          </p>
+      </div>
+      <iframe src="d3_plot_internal_script.html" width = "85%" height="500px" frameborder="0"></iframe>
+  </div>
+
+  <hr style="border: none; height: 2px; background: rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8); margin-top: 50px">
+
+  <a id="injury-weather-hazard" href="#injury-weather-hazard">
+  </a>
+    <p style="margin-top: 50px;">
+      This side by side bar plot displays the proportion of crashes that occur in Montgomery
+      County based on the weather hazard type and the injury severity sustained by the 
+      driver. Since there are so many different weather types in this dataset, we decided 
+      to split the types fitted into three categories: Not Hazardous, Moderate Hazardous, 
+      and Very Hazardous. We decided to use a  proportion rather than count to determine if 
+      more serious injuries would increase as the weather gets more dangerous for drivers. We 
+      see that there is no difference in the proportion of major injuries when the driver is 
+      not at fault. However, this proportion slightly increases when the driver is responsible 
+      for the crash. For possible injuries, it increases by 1.5% from not hazardous to very 
+      hazardous. Additionally, minor injuries increase by 0.6% from not hazardous to moderate 
+      hazardous in this category. This suggests that there are many more factors to consider 
+      that impact the condition of the driver other than how the weather is. Some possibilities 
+      include how visible the road conditions were or how fast the driver was going.
+    </p>
+    <div id="barplot"></div>
+    <div style="text-align: center; width: 100%;">
+      <iframe src="bar_plot-2.html" width="90%" height="540px" frameborder="0" style="margin-bottom: 50px; display: block; margin-left: auto; margin-right: auto;"></iframe>
+   </div>
+    <hr style="border: none; height: 2px; background: rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);">
+
+    <p style = "margin-top: 50px">
+        This is a stacked area chart that displays the evolution of multiple groups' 
+        values on the same graphic - visualizing the proportion of crash severities on 
+        each date during clear weather conditions over time (from early 2024 to March 2025). 
+        Each color represents a different severity level, and the vertical axis shows the 
+        proportion (%) of crashes on that specific day. This graph focuses mostly on clear 
+        weather, as it has the most occurrences of car crashes in the past year. The x-axis 
+        represents a time series of clear weather conditions from early 2024 to March 2025, 
+        while the y-axis portrays the percentage of crashes (0-100%) attributed to each 
+        severity level on a given day. The legend on the top right shows the 5 common severity
+        levels: fatal injury (very rare), no apparent injury (dominates the graph), possible 
+        injury, suspected minor injury, and suspected serious injury (not as common as minor 
+        injury but more common than fatal). Possible injury represents data that have not yet 
+        been classified as minor or serious injuries but are most likely under one of those 
+        categories. 
+
+    </p>
+    <a id="injury-area-graph" href="#injury-area-graph">
+    <div class="center">
+    <iframe src="crashes_by_type-2.html" width="85%" height="550px" frameborder="0"></iframe>
+    </div>
+    <hr style="border: none; height: 2px; background: rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);">
+
+    </a>
+<a id="scatter_bar" href="#scatter_bar">
+</a>
+<p>
+  The scatterplot on the left shows the proportion of accidents which result in injury and average speed limit for the
+  100 most accident-prone roads in Montogmery county. The size of the markers indicates the number of accidents on the
+  road and the color indicates what type of road it is. Specific roads can be selected by dragging over a region. 
+  The bar graph on the right shows the road names and accident proprotions of the roads
+  which are selected on the scatter plot. The scatterplot, displays the relationship between speed limits, route 
+  types, and how dangerous crashes are on the road, as measured by injury proportion. Furthermore,
+  viewing the graphs in tandem allows the viewer to more clearly understand the relationship in certain injury proportion
+  or speed limit intervals and to identify specific roads which are especially troublesome.
+</p>
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <iframe src="speed_limit_bar.html" width="100%" height="700px" frameborder="0"></iframe>
+</div>
+
+  <h2 style="text-align: center;">Conclusion</h3>
+  <p>These visualizations demonstrate a somewhat minor correlation between environmental 
+    factors — weather and road conditions — and crash occurrence and severity. However, the differences in severity we observed were
+    small enough that it is doubtful that weather plays a particularly outsized role.
+    Despite this, these insights are still important for drivers. 
+    Drivers in Montgomery County, as well as road safety officers, may be enabled to better direct their resources towards dealing 
+    with other factors, such as speeding and ensuring vehicle fitness for the road, which our later analysis showed to be perhaps more strongly linked to accident severity. 
+    Overall, our results can support targeted safety campaigns, smarter infrastructure planning, and the potential development of real-time interventions,
+    such as weather-triggered traffic alerts. Our analysis of particularly dangerous roads could also be helpful for safety purposes. 
+    In summary, while we failed to identify strong correlations which pinpoint a possible cause for major accidents, our analysis still provides additional data which can inform better safety measures.</p>
+  </div>
+  </body>
+  </html>

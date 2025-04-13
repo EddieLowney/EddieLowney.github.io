@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-132523c53e2344ad1130b8c5407d1ea5"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "hazard_level", "sort": ["Not Hazardous", "Moderate Hazardous", "Very Hazardous"], "type": "nominal"}, "column": {"field": "Driver At Fault", "type": "nominal"}, "tooltip": [{"field": "Injury Severity", "type": "nominal"}, {"field": "count", "type": "quantitative"}, {"field": "total_in_hazard_level", "type": "quantitative"}, {"field": "proportion", "type": "quantitative"}], "x": {"axis": {"labelAngle": 45, "labelPadding": 5, "title": "Injury Severity"}, "field": "Injury Severity", "sort": ["possible injury", "suspected minor injury", "suspected serious injury", "fatal injury"], "type": "nominal"}, "xOffset": {"field": "hazard_level", "sort": ["Not Hazardous", "Moderate Hazardous", "Very Hazardous"], "type": "nominal"}, "y": {"axis": {"labelPadding": 5, "title": "Proportion"}, "field": "proportion", "type": "quantitative"}}, "params": [{"name": "param_1", "select": {"type": "point", "fields": ["Injury Severity"]}, "bind": {"input": "select", "options": [null, "possible injury", "suspected minor injury", "suspected serious injury", "fatal injury"], "labels": ["All", "possible injury", "suspected minor injury", "suspected serious injury", "fatal injury"], "name": "Injury Severity: "}}], "title": "Proportion of Injury Severity by Weather Hazard Level and Driver At Fault", "transform": [{"filter": {"param": "param_1"}}], "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-132523c53e2344ad1130b8c5407d1ea5": [{"hazard_level": "Moderate Hazardous", "Injury Severity": "fatal injury", "Driver At Fault": "Yes", "count": 1, "proportion": 0.0, "total_in_hazard_level": 3040}, {"hazard_level": "Moderate Hazardous", "Injury Severity": "possible injury", "Driver At Fault": "No", "count": 149, "proportion": 0.049, "total_in_hazard_level": 3040}, {"hazard_level": "Moderate Hazardous", "Injury Severity": "possible injury", "Driver At Fault": "Yes", "count": 120, "proportion": 0.039, "total_in_hazard_level": 3040}, {"hazard_level": "Moderate Hazardous", "Injury Severity": "suspected minor injury", "Driver At Fault": "No", "count": 113, "proportion": 0.037, "total_in_hazard_level": 3040}, {"hazard_level": "Moderate Hazardous", "Injury Severity": "suspected minor injury", "Driver At Fault": "Yes", "count": 108, "proportion": 0.036, "total_in_hazard_level": 3040}, {"hazard_level": "Moderate Hazardous", "Injury Severity": "suspected serious injury", "Driver At Fault": "No", "count": 9, "proportion": 0.003, "total_in_hazard_level": 3040}, {"hazard_level": "Moderate Hazardous", "Injury Severity": "suspected serious injury", "Driver At Fault": "Yes", "count": 13, "proportion": 0.004, "total_in_hazard_level": 3040}, {"hazard_level": "Not Hazardous", "Injury Severity": "fatal injury", "Driver At Fault": "No", "count": 30, "proportion": 0.0, "total_in_hazard_level": 174474}, {"hazard_level": "Not Hazardous", "Injury Severity": "fatal injury", "Driver At Fault": "Yes", "count": 102, "proportion": 0.001, "total_in_hazard_level": 174474}, {"hazard_level": "Not Hazardous", "Injury Severity": "possible injury", "Driver At Fault": "No", "count": 10264, "proportion": 0.059, "total_in_hazard_level": 174474}, {"hazard_level": "Not Hazardous", "Injury Severity": "possible injury", "Driver At Fault": "Yes", "count": 6601, "proportion": 0.038, "total_in_hazard_level": 174474}, {"hazard_level": "Not Hazardous", "Injury Severity": "suspected minor injury", "Driver At Fault": "No", "count": 6952, "proportion": 0.04, "total_in_hazard_level": 174474}, {"hazard_level": "Not Hazardous", "Injury Severity": "suspected minor injury", "Driver At Fault": "Yes", "count": 5280, "proportion": 0.03, "total_in_hazard_level": 174474}, {"hazard_level": "Not Hazardous", "Injury Severity": "suspected serious injury", "Driver At Fault": "No", "count": 636, "proportion": 0.004, "total_in_hazard_level": 174474}, {"hazard_level": "Not Hazardous", "Injury Severity": "suspected serious injury", "Driver At Fault": "Yes", "count": 796, "proportion": 0.005, "total_in_hazard_level": 174474}, {"hazard_level": "Very Hazardous", "Injury Severity": "possible injury", "Driver At Fault": "No", "count": 20, "proportion": 0.054, "total_in_hazard_level": 372}, {"hazard_level": "Very Hazardous", "Injury Severity": "possible injury", "Driver At Fault": "Yes", "count": 16, "proportion": 0.043, "total_in_hazard_level": 372}, {"hazard_level": "Very Hazardous", "Injury Severity": "suspected minor injury", "Driver At Fault": "No", "count": 17, "proportion": 0.046, "total_in_hazard_level": 372}, {"hazard_level": "Very Hazardous", "Injury Severity": "suspected minor injury", "Driver At Fault": "Yes", "count": 12, "proportion": 0.032, "total_in_hazard_level": 372}, {"hazard_level": "Very Hazardous", "Injury Severity": "suspected serious injury", "Driver At Fault": "No", "count": 2, "proportion": 0.005, "total_in_hazard_level": 372}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
