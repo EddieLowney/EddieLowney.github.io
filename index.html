@@ -56,23 +56,23 @@
 
 <div class="wrapper">
     <h3>Introduction</h3>
-    <p>Montgomery county is the most populace county in Maryland with over 1 million residents. 
-      Montgomery also has the second highest cost of living in the state and a broadly wealthy population.
-      It is also a popular county to drive through in order to get to 
-      the nation’s capital: Washington, D.C as well as Baltimore. Because of this increased traffic,
-      and its large population, Montgomery county serves as an excellent candidate for analysis of traffic incidents
-      which is generalizable to both communters, residents taking shorter trips, and long-haul traffic. Our 
-      project aims to analyze the impact of weather and road conditions in car crashes and 
-      how they impact the wide-ranging levels in severity of crashes in Montgomery county. We used data
-      collected by the Maryland State Police automated crash reporting system, the Montogomery county polices, 
-      and other relevant police jurisdictions. The data contained 192,000 records of separate car crashes
-      occurring in Montogomery County from 2015 to roughly the current date. No significant cleaning was performed on the data.
-      However, some of the visuals required deriving new data from existing columns. For example,
-      the vehicle age was calculated from the vehicle model year and crash date.
-      Specifically, we hope to determine if there is a strong up-tick in crash severity due to weather
-      conditions, if there are specific geographic areas or roads which are especially prone to severe accidents,
-      and whether other factors like vehicle age and road speed limits are relevant. 
-      We used these reference papers as inspiration for our work in our project: </p>
+    <p>Montgomery County is the most populous county in Maryland, with over 1 million residents. Montgomery also has the second highest cost of 
+      living in the state and a broadly wealthy population. Most relevant for our work, however, Montgomery sees significant through-traffic of 
+      travelers to Washington D.C. and Baltimore. Because of this increased traffic and its large population, Montgomery County serves as an excellent 
+      candidate for analysis of traffic incidents, which is generalizable to both commuters, residents taking shorter trips, and long-haul traffic. 
+      Our project aims to analyze the impact of weather and road conditions on car crashes and, in particular, how they impact the severity of crashes. 
+      We used data collected by the Maryland State Police automated crash reporting system, the Montgomery County police, and other relevant police jurisdictions. 
+      The dataset we used, titled “Crash Reporting – Drivers Data”, was obtained from the Maryland Open Data Portal. The dataset contains 193,636 rows and 39 columns, 
+      each representing a specific car crash event from 2015 through early 2025. No significant cleaning was performed on the data. 
+      However, some of the visuals required deriving new data from existing columns. For example, vehicle age was computed from the vehicle model year and crash date. 
+      Throughout our project, we used several terms and abbreviations such as ACRD (Automated Crash Reporting System), Crash Severity (the level of injury sustained such 
+      as minor, possible, serious, or fatal), and Driver At Fault (whether the driver was responsible for the accident). To better understand and clean our dataset, 
+      we grouped features into categories such as crash Metadata (date and time, case number), Environmental Conditions (level of daylight, weather, speed limit), 
+      Vehicle/Driver Information (Vehicle make, vehicle year), Geographic Data (location, road name), and Crash Outcome Factors (Driver At Fault, Injury Severity). 
+      Specifically, we investigated if there is a strong uptick in crash severity due to weather conditions, if there are specific geographic areas or roads that are 
+      especially prone to severe accidents, and whether other factors like vehicle age and road speed limits are relevant. We used these reference papers as inspiration 
+      for our work in our project: </p>
+      <a href="https://catalog.data.gov/dataset/crash-reporting-drivers-data">Data Source</a>
       <a href="https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813560">Overview of Motor Vehicle Traffic Crashes
         in 2022<br></a>
       <a href="https://www.mdpi.com/2220-9964/4/4/2681">Weather Conditions, Weather Information, and Car Crashes</a>  
@@ -123,21 +123,17 @@
         </table>
     <a id="accident-map" href="#accident-map">
     </a>
-    <p>This interactive map shows where crashes happened in the 2024 calendar year.
-        Although many points are shown at default, users can filter crashes based 
-        on the type of injury sustained as a result of the crash: serious, minor, and 
-        possible injury. As a result, these different types of injuries are also 
-        represented with a different color. By filtering for only crashes leading to 
-        serious injuries, we see that a majority of these crashes happen on major highways 
-        and roads, instead of residential areas. In addition, it seems like the weather 
-        conditions do not seem to have an affect on the severity of these crashes whatsoever 
-        because some of these crashes happened in clear weather. On the map, this is 
-        represented by solid color lines like pink and yellow. Some recurring roads that have 
-        had serious injuries take place include Georgia Avenue, Frederick Road, and Eisenhower 
-        Memorial Highway. It makes sense that more serious injuries would happen on these 
-        types of roads, but it’s important to acknowledge this to further investigate what 
-        can be done on the roads to minimize the number of crashes that lead to fatal or 
-        serious injuries. 
+    <p>This interactive map shows where crashes happened in the 2024 calendar year. Although many points are shown at default,
+       users can filter crashes based on the type of injury sustained as a result of the crash: serious, minor, and possible injury. 
+       As a result, these different types of injuries are also represented with a different color. By filtering for only crashes leading 
+       to serious injuries, we see that a majority of these crashes happen on major highways and roads, instead of residential areas. In 
+       addition, it seems like the weather conditions do not seem to have an affect on the severity of these crashes whatsoever because 
+       some of these crashes happened in clear weather. On the map, this is represented by solid color lines like pink and yellow. Some 
+       recurring roads that have had serious injuries take place include Georgia Avenue, Frederick Road, and Eisenhower Memorial Highway. 
+       It makes sense that more serious injuries would happen on these types of roads, but it’s important to acknowledge this to further 
+       investigate what can be done on the roads to minimize the number of crashes that lead to fatal or serious injuries. 
+
+
     </p>
     <div class = 'center'></div>
         <iframe src="map.html" width="90%" height="600px" frameborder="0"></iframe>
@@ -168,18 +164,24 @@
   </a>
     <p style="margin-top: 50px;">
       This side by side bar plot displays the proportion of crashes that occur in Montgomery
-      County based on the weather hazard type and the injury severity sustained by the 
-      driver. Since there are so many different weather types in this dataset, we decided 
-      to split the types fitted into three categories: Not Hazardous, Moderate Hazardous, 
-      and Very Hazardous. We decided to use a  proportion rather than count to determine if 
-      more serious injuries would increase as the weather gets more dangerous for drivers. We 
-      see that there is no difference in the proportion of major injuries when the driver is 
-      not at fault. However, this proportion slightly increases when the driver is responsible 
-      for the crash. For possible injuries, it increases by 1.5% from not hazardous to very 
-      hazardous. Additionally, minor injuries increase by 0.6% from not hazardous to moderate 
-      hazardous in this category. This suggests that there are many more factors to consider 
-      that impact the condition of the driver other than how the weather is. Some possibilities 
-      include how visible the road conditions were or how fast the driver was going.
+       County based on the weather hazard type and the injury severity sustained by the 
+       driver. Since there are so many different weather types in this dataset, we decided 
+       to split the types fitted into three categories: Not Hazardous, Moderate Hazardous, 
+       and Very Hazardous. We decided to use a  proportion rather than count to determine if 
+       more serious injuries would increase as the weather gets more dangerous for drivers. 
+       We also had to remove the “no apparent injury” in our Injury Severity column because 
+       they made up an overwhelming proportion for each hazard category. We see that there 
+       is no difference in the proportion of major injuries when the driver is not at fault, 
+       which is due to less observations in serious injuries as the weather gets more dangerous. 
+       However, this proportion slightly increases when the driver is responsible for the crash 
+       only when the injuries are more serious by about 0.1%. For possible and minor injuries, 
+       the proportion decreases regardless of how hazardous the conditions were outside. We also 
+       see that there are a very small number of observations for fatal injuries overall, which
+        means that a more hazardous weather condition doesn’t mean a more serious injury. This 
+        suggests that there are many more factors to consider that impact the condition of the 
+        driver other than how the weather is. Some possibilities include how visible the road 
+        conditions were or how fast the driver was going.
+
     </p>
     <div id="barplot"></div>
     <div style="text-align: center; width: 100%;">
@@ -188,20 +190,30 @@
     <hr style="border: none; height: 2px; background: rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);">
 
     <p style = "margin-top: 50px">
-        This is a stacked area chart that displays the evolution of multiple groups' 
-        values on the same graphic - visualizing the proportion of crash severities on 
-        each date during clear weather conditions over time (from early 2024 to March 2025). 
-        Each color represents a different severity level, and the vertical axis shows the 
-        proportion (%) of crashes on that specific day. This graph focuses mostly on clear 
-        weather, as it has the most occurrences of car crashes in the past year. The x-axis 
-        represents a time series of clear weather conditions from early 2024 to March 2025, 
-        while the y-axis portrays the percentage of crashes (0-100%) attributed to each 
-        severity level on a given day. The legend on the top right shows the 5 common severity
-        levels: fatal injury (very rare), no apparent injury (dominates the graph), possible 
-        injury, suspected minor injury, and suspected serious injury (not as common as minor 
-        injury but more common than fatal). Possible injury represents data that have not yet 
-        been classified as minor or serious injuries but are most likely under one of those 
-        categories. 
+    This interactive monthly line chart displays how crash injuries in Montgomery County 
+    occur under different weather conditions. Using a drop-down menu, users can select from 
+    the four major weather types — Clear, Cloudy, Rain, and Snow. Each line represents a 
+    different injury severity level (excluding “No Apparent Injury”), and the vertical axis 
+    shows the number of reported crashes per month for each type. When selecting “clear” 
+    weather, for example, we can see that suspected minor injuries and possible injuries 
+    are the most commonly reported injury types. In contrast, fatal injuries remain 
+    consistently low (under 4 crashes per month, which highlights their rarity). There are 
+    some cyclical trends during clear weather conditions. In October 2024, there was a 
+    notable spike in “Possible Injury” crashes under clear weather conditions. This may 
+    reflect a seasonal increase in traffic volume due to school and work routines, combined
+    with environmental factors like lower sun angles and morning hazards. Also, June had many 
+    more minor injury occurrences than any other month, possibly because of more travel or 
+    traffic during that period. The other weather types have much fewer injury occurrences 
+    due to their variations. Months such as May and September had significantly higher 
+    minor/possible injuries from car crashes as these months tend to be cloudier than others. 
+    Summer months (June- August) typically have much fewer clouds in Montgomery County, and 
+    that is why the injury occurrences are much less in those months than in others. The same 
+    applies to rain; high-rain months such as September and May had many more injuries from 
+    car crashes than other months, and summer months had very few due to the inexistence of 
+    rain. Snow was much more rare in Montgomery County; It had many occurrences of possible 
+    injuries in January 2024 but didn’t have any more car crash injury occurrences up until 
+    December 2024, which makes sense considering these months have more snow than others
+
 
     </p>
     <a id="injury-area-graph" href="#injury-area-graph">
